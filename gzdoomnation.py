@@ -62,7 +62,7 @@ class TheWindow(wx.Panel):
 		self.button5 = wx.Button(self, label="&Custom Loading Order")
 		self.button5.Bind(wx.EVT_BUTTON, self.CustomLoadingOrder)
 		
-		#maybe buttons to manually load WADs and PK3s, and GZDN can load a config at startup? Later
+		#maybe buttons to manually load WADs and PK3s, and this can load a config at startup? Later
 
 		self.buttonquit = wx.Button(self, label="&Quit")
 		self.buttonquit.Bind(wx.EVT_BUTTON, self.Quitter)
