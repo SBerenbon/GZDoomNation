@@ -14,6 +14,8 @@ import platform
 from subprocess import Popen
 
 def isIwad(nameoffile):
+	if os.path.basename(nameoffile)=="voices.wad":
+		return False
 	f=open(nameoffile, "rb")
 	wadHeader=f.read(4)
 	f.close()
