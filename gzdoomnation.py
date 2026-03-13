@@ -187,7 +187,7 @@ class TheWindow(wx.Panel):
 		for addOn in self.loadedaddons.GetSelections():
 			theAddOns.append(self.loadedaddons.GetString(addOn))
 		commandListForPopen=self.CommandMaker(theAddOns)
-		self.command.SetValue(" ".join(commandListForPopen))
+		self.command.SetValue(shlex.quote(" ".join(commandListForPopen)))
 		p = Popen(commandListForPopen)
 
 	def Reset(self, event):
