@@ -31,10 +31,10 @@ home = os.path.expanduser("~")
 gzHome=""
 gzHomeGlobbing=""
 if platform.system()=="Linux":
-	gzHome=os.path.join(home, ".config", "gzdoom")
+	gzHome=os.path.join(home, ".local", "share", "games", "uzdoom")
 elif platform.system()=="Darwin":
 	#TODO: Where does GZDoom live in OS X?
-	gzHome=os.path.join(home, ".config", "gzdoom")
+	gzHome=os.path.join(home, ".local", "share", "games", "uzdoom")
 elif platform.system()=="Windows":
 	#TODO: Where does GZDoom live in Windows?
 	#Well, you run it from wherever, and drop the files on the executable
@@ -123,9 +123,9 @@ class TheWindow(wx.Panel):
 
 	def CommandMaker(self, selectedAddOns):
 		theBase=""
-		gzdoomcommand="gzdoom"
+		gzdoomcommand="uzdoom"
 		if platform.system()=="Windows":
-			gzdoomcommand="gzdoom.exe"
+			gzdoomcommand="uzdoom.exe"
 		finalcommand=gzdoomcommand
 		finalcommandlist=[gzdoomcommand]
 		if self.loadedbases.GetSelection()>=0:
@@ -174,7 +174,7 @@ class TheWindow(wx.Panel):
 				showCommandDlg=wx.MessageDialog(None, "Show command?", "", wx.YES_NO | wx.CANCEL)
 				showChoice=showCommandDlg.ShowModal()
 				if showChoice==wx.ID_YES:
-					self.command.SetValue(" ".join(commandListForPopen))
+					self.command.SetValue(shlex.quote(" ".join(commandListForPopen)))
 				launchDlg=wx.MessageDialog(None, "Launch?", "", wx.YES_NO | wx.CANCEL)
 				launchChoice=launchDlg.ShowModal()
 				if launchChoice==wx.ID_YES:
